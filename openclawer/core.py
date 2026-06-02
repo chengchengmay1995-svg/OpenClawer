@@ -1,10 +1,10 @@
-"""datapipe core — deterministic clean/cross-check/update engine.
+"""openclawer core — deterministic clean/cross-check/update engine.
 
 Platform-agnostic, stdlib-only. The search/fan-out step is NOT here (it's
 platform-specific); this engine takes a `provenance.csv` and produces the clean
 table, conflicts, and idempotent update diffs.
 
-Data root: $DATAPIPE_ROOT or ~/data-pipeline ; per-topic dir <root>/<topic>/.
+Data root: $OPENCLAWER_ROOT or ~/data-pipeline ; per-topic dir <root>/<topic>/.
 INVERTED tier scale: 1 = most credible … 5 = least (see tierlib).
 """
 import csv
@@ -13,7 +13,7 @@ import os
 import re
 from collections import defaultdict
 
-DEFAULT_ROOT = os.path.expanduser(os.environ.get("DATAPIPE_ROOT", "~/data-pipeline"))
+DEFAULT_ROOT = os.path.expanduser(os.environ.get("OPENCLAWER_ROOT", "~/data-pipeline"))
 
 CELL_KEYS = ["subject", "field", "variant", "scope", "kind"]
 TARGET_KINDS = {"目标", "规划", "在建", "target", "plan"}

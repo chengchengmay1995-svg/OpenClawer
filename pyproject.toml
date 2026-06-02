@@ -3,17 +3,23 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "datapipe"
+name = "openclawer"
 version = "0.1.0"
 description = "Portable collect->clean->cross-check->update engine for multi-source verified datasets"
+readme = "README.md"
 requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "C.Mei" }]
 dependencies = []                       # core is stdlib-only
 
 [project.optional-dependencies]
 yaml = ["pyyaml>=5"]                     # enables reading authority_tiers from sources.yaml
 
+[project.urls]
+Homepage = "https://github.com/chengchengmay1995-svg/OpenClawer"
+
 [project.scripts]
-datapipe = "datapipe.cli:main"
+openclawer = "openclawer.cli:main"
 
 [tool.setuptools]
-packages = ["datapipe"]
+packages = ["openclawer"]

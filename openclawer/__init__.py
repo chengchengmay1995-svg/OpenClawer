@@ -1,4 +1,4 @@
-"""datapipe — portable collect→clean→cross-check→update engine.
+"""openclawer — portable collect→clean→cross-check→update engine.
 
 The deterministic core (clean/cross-check/update + credibility tiering) is
 stdlib-only and runs on any platform. The search/fan-out step is platform-

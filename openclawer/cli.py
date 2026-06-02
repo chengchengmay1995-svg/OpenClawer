@@ -1,10 +1,10 @@
-"""datapipe CLI — deterministic clean / cross-check / update.
+"""openclawer CLI — deterministic clean / cross-check / update.
 
-  datapipe init       --topic X [--root DIR]
-  datapipe tier-assign --topic X [--root DIR]      # fill blank `tier` in provenance.csv
-  datapipe crosscheck --topic X [--tolerance 0.05] [--root DIR]
-  datapipe update     --topic X --date YYYY-MM-DD  [--root DIR]
-  datapipe tier       --source "..." [--url "..."] [--topic X]   # one-off lookup
+  openclawer init       --topic X [--root DIR]
+  openclawer tier-assign --topic X [--root DIR]      # fill blank `tier` in provenance.csv
+  openclawer crosscheck --topic X [--tolerance 0.05] [--root DIR]
+  openclawer update     --topic X --date YYYY-MM-DD  [--root DIR]
+  openclawer tier       --source "..." [--url "..."] [--topic X]   # one-off lookup
 
 Search/fan-out is platform-specific and intentionally NOT part of this CLI: feed
 your platform's web-search results into <root>/<topic>/provenance.csv, then run
@@ -80,8 +80,8 @@ def cmd_tier(a):
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(prog="datapipe", description="deterministic clean/cross-check/update")
-    p.add_argument("--root", default=None, help="data root (default $DATAPIPE_ROOT or ~/data-pipeline)")
+    p = argparse.ArgumentParser(prog="openclawer", description="deterministic clean/cross-check/update")
+    p.add_argument("--root", default=None, help="data root (default $OPENCLAWER_ROOT or ~/data-pipeline)")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     sp = sub.add_parser("init"); sp.add_argument("--topic", required=True); sp.set_defaults(fn=cmd_init)
