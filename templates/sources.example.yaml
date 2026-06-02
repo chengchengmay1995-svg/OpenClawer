@@ -1,0 +1,30 @@
+# Copy to ~/data-pipeline/<topic>/sources.yaml and fill in.
+topic: example_topic
+
+# Open keyword search. One query group per field; list several phrasings
+# (mix Chinese + English) so the search subagent casts a wide net.
+queries:
+  capacity_MW:
+    - "<subject> 装机容量 MW"
+    - "<subject> installed capacity MW"
+  demand_TWh:
+    - "<subject> 用电量 亿千瓦时"
+    - "<subject> electricity demand TWh"
+
+# Authority tiers — INVERTED scale: tier 1 = MOST credible, 5 = least.
+# Lowest tier number wins on conflict. The cleaning step matches a finding's
+# url/source against `match` substrings (via scripts/tierlib.py) and records the tier.
+authority_tiers:
+  - tier: 1            # official / government / national statistics / ministry / IEA
+    match: ["gov.cn", "stats.gov.cn", "iea.org"]
+  - tier: 2            # listed-co legal filings + industry bodies / research institutes
+    match: ["cninfo", "年报", "公告", "cec.org.cn", "信通院", "协会"]
+  - tier: 3            # academic literature
+    match: ["cnki", "学报", "arxiv", "springer"]
+  - tier: 4            # serious / financial media
+    match: ["caixin", "财新", "reuters", "bloomberg", "新华", "央广"]
+  - tier: 5            # industry portals / PR / UGC / everything else (fallback)
+    match: ["*"]
+
+# Optional: which subjects to track (leave empty to let search discover them).
+subjects: []
